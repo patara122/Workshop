@@ -3,8 +3,8 @@ import useDutyStore from '../../Store/useDutyStore'
 
 const PersonelList = () => {
 //Zustand
-  const kaika = useDutyStore((state)=>state.kaika);
-  //console.log(kaika);
+  const personnel = useDutyStore((state)=>state.personnel);
+  console.log(personnel);
 
 
 
@@ -15,4 +15,4 @@ const PersonelList = () => {
   )
 }
 
-export default PersonelList
+export default PersonelList;

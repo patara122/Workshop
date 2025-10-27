@@ -6,7 +6,7 @@ const client = axios.create({
     baseURL: API_URL,
 })
 
-const api = {
+export const api = {
     
     async get(path){
         //fn body

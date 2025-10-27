@@ -4,27 +4,20 @@ import Header from './components/layout/header'
 import MapView from './components/map/MapView'
 import LocationList from './components/locations/LocationList'
 import axios from 'axios'
+import useDutyStore from './Store/useDutyStore'
 
 const App = () => {
 //JS
+
+  const fetchAll = useDutyStore((state)=>state.fetchAll);
+
   useEffect(() => {
     // fn body
     fetchAll();
 
-  },[])
+  },[]);
 
-  const fetchAll = async ()=>{
 
-      try{
-        const res = await axios.get('http://localhost:3000/personnel');
-
-        console.log(res.data);
-      } catch(error){
-
-        console.log(error.response.data)
-      }
-  
-  }
 
 
 
