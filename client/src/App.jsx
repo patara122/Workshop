@@ -1,10 +1,34 @@
-import React from 'react'
+import React, { useEffect, useReducer } from 'react'
 import PersonelList from './components/people/PersonelList'
 import Header from './components/layout/header'
 import MapView from './components/map/MapView'
 import LocationList from './components/locations/LocationList'
+import axios from 'axios'
 
 const App = () => {
+//JS
+  useEffect(() => {
+    // fn body
+    fetchAll();
+
+  },[])
+
+  const fetchAll = async ()=>{
+
+      try{
+        const res = await axios.get('http://localhost:3000/personnel');
+
+        console.log(res.data);
+      } catch(error){
+
+        console.log(error.response.data)
+      }
+  
+  }
+
+
+
+
   return (
     <div className='flex h-screen bg-gray-100'> 
       <PersonelList />

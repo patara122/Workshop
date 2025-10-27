@@ -3,9 +3,13 @@ import { create } from "zustand";
 const dutyStore = () => ({
 
     personnel: [],
-    kaika: "tam",
-    jukkru: () => console.log("Jukkru!!!  ")
+    locations: [],
+    assignments: [],
+    selectedLocationId:null,
+    
 
 })
 
 const useDutyStore = create(dutyStore);
+
+export default useDutyStore;
