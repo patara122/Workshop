@@ -6,7 +6,7 @@ import { Users, Clock } from 'lucide-react';
 const PersonelList = () => {
   //Zustand
   const personnel = useDutyStore((state) => state.personnel);
-  console.log(personnel);
+  //console.log(personnel);
 
 
 

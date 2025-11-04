@@ -5,7 +5,7 @@ import useDutyStore from '../../Store/useDutyStore'
 const LocationList = () => {
 
   const locations = useDutyStore((state) => state.locations);
-  console.log(locations);
+  //console.log(locations);
 
 
   return (
