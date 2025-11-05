@@ -1,12 +1,23 @@
 import React from 'react'
 import { MapContainer } from 'react-leaflet/MapContainer'
 import Layers from './Layers';
+import { useMap, useMapEvents } from 'react-leaflet';
 
+const ClickToAdd = ({adding,onPick})=>{
 
-const MapView = () => {
+useMapEvents({
+  click(e){
+    if(adding){
+    onPick(e.latlng.lat,e.latlng.lng);
+    }
+  }
+})
+return
+}
+
+const MapView = ({adding,onPick}) => {
 
   const center = [13, 100];
-
   return (
     <div className='flex-1'>
       <MapContainer
@@ -16,7 +27,7 @@ const MapView = () => {
         scrollWheelZoom={true}
       >
         <Layers />
-
+        <ClickToAdd adding={adding} onPick={onPick} />
       </MapContainer>
     </div>
   )

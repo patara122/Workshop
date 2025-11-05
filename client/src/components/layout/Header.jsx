@@ -3,7 +3,7 @@ import React from 'react'
 
 const Header = ({ adding, setAdding }) => {
 
-  console.log(adding)
+  //console.log(adding)
   return (
     <div className='p-4 bg-white shadow-md border-b
     border-gray-200'>
