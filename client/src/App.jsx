@@ -1,38 +1,48 @@
-import React, { useEffect, useReducer,useState} from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import PersonelList from './components/people/PersonelList'
 import Header from './components/layout/Header'
 import MapView from './components/map/MapView'
 import LocationList from './components/locations/LocationList'
 import axios from 'axios'
 import useDutyStore from './Store/useDutyStore'
+import AddLocationModal from './components/locations/AddLocationModal'
 
 const App = () => {
-//JS
-  const [adding,setAdding]= useState(false);
-  const [pending,setPending]= useState(null);
-  const fetchAll = useDutyStore((state)=>state.fetchAll);
+  //JS
+  const [adding, setAdding] = useState(false);
+  const [pending, setPending] = useState(null);
+  const fetchAll = useDutyStore((state) => state.fetchAll);
 
   useEffect(() => {
     // fn body
     fetchAll();
 
-  },[]);
+  }, []);
 
-const onPick =(lat,lng)=>{
-  setPending({lat,lng});
-}
-console.log(pending);
+  const onPick = (lat, lng) => {
+    setPending({ lat, lng });
+  }
+  console.log(pending);
 
   return (
-    <div className='flex h-screen bg-gray-100'> 
+    <div className='flex h-screen bg-gray-100'>
       <PersonelList />
       <div className='flex flex-col flex-1'>
         <Header adding={adding} setAdding={setAdding} />
         <div className='flex flex-1 overflow-hidden'>
-          <MapView adding={adding} onPick={onPick}/>
+          <MapView adding={adding} onPick={onPick} />
           <LocationList />
         </div>
       </div>
+      {
+        pending && <AddLocationModal
+          lat={pending.lat}
+          lng={pending.lng}
+          setAdding={setAdding}
+          setPending={setPending}
+        />
+      }
+
     </div>
   )
 }
