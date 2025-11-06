@@ -27,7 +27,7 @@ const dutyStore = (set,get) => ({
 
     addLocation: async (lat,lng,name)=>{
         try{
-        await api.post('/locations',{
+        const res= await api.post('/locations',{
             name:name,
             lat:Number(lat),
             lng:Number(lng),
