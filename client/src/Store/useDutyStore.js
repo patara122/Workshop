@@ -25,6 +25,19 @@ const dutyStore = (set,get) => ({
         
     },
 
+    addLocation: async (lat,lng,name)=>{
+        try{
+        await api.post('/locations',{
+            name:name,
+            lat:Number(lat),
+            lng:Number(lng),
+            maxCapacity:5
+        });
+        await get().fetchAll();
+    }catch(error){
+        console.log("Add Location Err",error)
+    }   
+    }
 })
 
 const useDutyStore = create(dutyStore);
