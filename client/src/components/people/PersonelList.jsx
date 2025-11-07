@@ -8,7 +8,10 @@ const PersonelList = () => {
   const personnel = useDutyStore((state) => state.personnel);
   //console.log(personnel);
 
-
+  const onDragStart = (e, personId) => {
+   // console.log("Drag Start:", personId);
+    e.dataTransfer.setData("text/plain", personId);
+  }
 
   return (
     <div className='w-80 bg-white overflow-auto-y'>
@@ -23,7 +26,10 @@ const PersonelList = () => {
         {
           personnel.map((item) => {
             return(
-            <div key={item.id} className='flex items-center gap-3 p-3
+            <div key={item.id} 
+            draggable={true}
+            onDragStart={(e)=>onDragStart(e, item.id)}
+            className='flex items-center gap-3 p-3
       bg-blue-100 border border-blue-300 rounded-lg cursor-move hover:shadow-md hover:scale-105'
             >
               <div className='text-3xl'>
